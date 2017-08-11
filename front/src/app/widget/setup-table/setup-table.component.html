@@ -1,0 +1,101 @@
+<div class="col-sm-offset-1 col-sm-10 page-right nopadding">
+  <div>
+    <h2 class="title">Setup table</h2>
+
+    <br>
+
+    <div class="override-primeng-datatable row">
+
+      <!-- Users -->
+      <div class="col-md-7 nopadding">
+        <label>Users days left :</label>
+        <p-dataTable [value]="users" #myTable expandableRows="true" [rows]="rowsLeave" [totalRecords]="totalRecordsLeave" [paginator]="true"
+                     (onRowClick)="myTable.toggleRow($event.data)" [pageLinks]="3" [rowsPerPageOptions]="[20,50,100]"
+                     [lazy]="true" (onLazyLoad)="loadLeaveLazy($event)">
+
+          <p-column field="login" header="Username">
+            <ng-template let-col let-row="rowData" pTemplate="body">
+              <span>{{row.login}}</span>
+            </ng-template>
+          </p-column>
+
+          <p-column field="daysLeft" header="Days left">
+            <ng-template let-col let-row="rowData" let-ri="rowIndex" pTemplate="body">
+              <span>{{row.daysLeft}}</span>
+            </ng-template>
+          </p-column>
+
+          <p-column [style]="{'width':'50px'}">
+            <ng-template pTemplate="body">
+              <span class="glyphicon glyphicon-pencil"></span>
+            </ng-template>
+          </p-column>
+
+          <ng-template let-user let-ri="rowIndex" pTemplate="rowexpansion">
+            <div class="ui-grid ui-grid-responsive ui-fluid div-user-info form-inline">
+              <div class="form-group">
+                <label for="days">Days left :</label>
+                <input type="number" class="form-control" id="days" name="days" [(ngModel)]="users[ri].daysLeft" min="0" max="999">
+              </div>
+              <div class="form-group">
+                <button type="button" class="btn btn-primary" (click)="addDays(ri)">Add days</button>
+              </div>
+            </div>
+          </ng-template>
+
+        </p-dataTable>
+      </div>
+
+      <div class="hidden-md hidden-lg"><hr></div>
+
+      <!-- Public holidays -->
+      <div class="col-md-offset-1 col-md-4 nopadding">
+        <label for="date">Public holidays :</label>
+        <div class="form-group">
+          <p-calendar id="date" name="date" dateFormat="dd/mm/yy" [(ngModel)]="publicHoliday" [disabledDates]="disabledDates" [disabledDays]="[0,6]" [minDate]="minDate" [monthNavigator]="true" [yearNavigator]="true" yearRange="2017:2030" required></p-calendar>
+        </div>
+        <div class="form-group">
+          <input type="text" id="description" name="description" class="form-control" placeholder="Description" [(ngModel)]="description">
+        </div>
+
+        <div class="alert alert-danger" *ngIf="alreadyExist">
+          <strong>Attention! </strong>The holiday already exist
+        </div>
+
+        <div class="form-group">
+          <button type="button" class="btn btn-primary" (click)="addHoliday()">Add holiday</button>
+        </div>
+
+        <br>
+
+        <p-dataTable [value]="holidayDates" #myDates expandableRows="true" [rows]="rowsDate" [totalRecords]="totalRecordsDate" [paginator]="true"
+                     (onRowClick)="myDates.toggleRow($event.data)" [pageLinks]="3" [rowsPerPageOptions]="[20,50,100]"
+                     [lazy]="true" (onLazyLoad)="loadHolidaysLazy($event)">
+
+          <p-column field="date" header="Holidays dates">
+            <ng-template let-col let-row="rowData" pTemplate="body">
+              <span>{{row.date | date: 'dd-MM-yyyy'}}</span>
+            </ng-template>
+          </p-column>
+
+          <p-column field="search" [style]="{'width':'50px'}">
+            <ng-template pTemplate="body">
+              <span class="glyphicon glyphicon-search"></span>
+            </ng-template>
+          </p-column>
+
+          <ng-template let-date pTemplate="rowexpansion">
+            <div class="ui-grid ui-grid-responsive ui-fluid div-date-info">
+              <div class="form-group">
+                <button type="button" class="btn btn-danger pull-right" (click)="deleteHoliday(date)">Delete</button>
+              </div>
+            </div>
+          </ng-template>
+
+        </p-dataTable>
+      </div>
+
+    </div>
+
+  </div>
+</div>

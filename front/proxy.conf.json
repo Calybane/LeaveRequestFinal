@@ -1,0 +1,10 @@
+{
+  "/login" : {
+    "target": "http://localhost:8070/ptl",
+    "secure": false
+  },
+  "/api/*": {
+    "target": "http://localhost:8070/ptl",
+    "secure": false
+  }
+}

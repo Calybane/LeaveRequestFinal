@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<dataset>
+    <leave_request id="1" login="user1" type_absence="Annual leave" leave_from="2017-07-25 14:30:00" leave_to="2017-07-26 10:30:00"
+                   days_taken="2" request_date="2017-07-24 14:30:00" status="Waiting for approval"/>
+    <leave_request id="2" login="user2" type_absence="Annual leave" leave_from="2017-07-27 14:30:00" leave_to="2017-07-28 10:30:00"
+                   days_taken="2" request_date="2017-07-24 14:30:00" status="Waiting for approval"/>
+    <leave_request id="3" login="user54" type_absence="Annual leave" leave_from="2017-05-10 14:30:00" leave_to="2017-05-11 10:30:00"
+                   days_taken="2" request_date="2017-07-24 14:30:00" status="Waiting for approval"/>
+    <leave_request id="4" login="user37" type_absence="Annual leave" leave_from="2017-07-26 14:30:00" leave_to="2017-07-30 10:30:00"
+                   days_taken="5" request_date="2017-07-24 14:30:00" status="Approved"/>
+    <leave_request id="8" login="user23" type_absence="Annual leave" leave_from="2017-07-25 14:30:00" leave_to="2017-07-26 10:30:00"
+                   days_taken="2" request_date="2017-07-24 14:30:00" status="Rejected"/>
+</dataset>

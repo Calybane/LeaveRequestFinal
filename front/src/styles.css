@@ -1,0 +1,118 @@
+/* You can add global styles to this file, and also import other style files */
+ul{
+  list-style: none;
+}
+.row{
+  margin-right: 0;
+  margin-left: 0;
+}
+.container{
+  padding-right: 0;
+  padding-left: 0;
+}
+div.row.container{
+  padding: 0;
+  width: 100%;
+}
+body{
+  font-size: 1.6em;
+  bottom: 0;
+  background-color: #f9f9f9;
+}
+.page-left{
+  padding: 1px 0 0;
+  margin: 0;
+}
+.page-right{
+  padding-bottom: 30px;
+}
+@media (max-width: 767px) {
+  tbody, .label {
+    font-size: 0.9em;
+  }
+}
+@media (min-width: 768px) {
+  .label {
+    font-size: 1em;
+  }
+}
+.pull-left {
+ margin: 5px 5px 5px 0;
+}
+.pull-right {
+  margin: 5px 0 5px 5px;
+}
+div .div-request-info, div .div-user-info,
+div-user-info, div-date-info {
+  text-align: left;
+  font-size:16px;
+  padding: 0 0 0 5px;
+}
+.btn-danger, .bg-danger{
+  background-color: #de0903;
+}
+.btn-success, .bg-success{
+  background-color: #009900;
+}
+.btn-warning, .bg-warning{
+  background-color: orange;
+}
+.text-white{
+  padding: 2px;
+  color: white;
+  font-weight: bold;
+}
+.title{
+  padding-left: 10px;
+}
+button.btn{
+  font-size: 1em;
+}
+.form-group .ui-calendar button{
+  width: 3em;
+  border-radius: 0 0.25em 0.25em 0;
+}
+
+/* DataTable */
+
+div.ui-paginator-bottom.ui-paginator.ui-widget.ui-widget-header.ui-unselectable-text{
+  padding: 10px 0;
+}
+body .override-primeng-datatable .ui-datatable .ui-datatable-data > tr > td,
+body .override-primeng-datatable .ui-datatable .ui-datatable-thead > tr > th {
+  padding-left: 5px;
+  padding-right: 5px;
+  text-align: center;
+}
+body .override-primeng-datatable .ui-datatable thead th.ui-state-active {
+  background-color: gray;
+  border-color: transparent;
+  color: #ffffff;
+}
+body .override-primeng-datatable .ui-datatable .ui-datatable-data tr.ui-datatable-even.ui-state-highlight,
+body .override-primeng-datatable .ui-state-active, body .override-primeng-datatable .ui-state-highlight,
+body .override-primeng-datatable .ui-datatable .ui-datatable-data tr.ui-state-highlight {
+  background-color: #9e9e9e;
+  border-color: #6d6d6d;
+}
+
+
+/* Schedule */
+
+.fc-toolbar.fc-header-toolbar,
+.fc-toolbar.fc-header-toolbar .fc-left,
+.fc-toolbar.fc-header-toolbar .fc-right {
+  margin-bottom: 5px !important;
+}
+.fc-toolbar.fc-header-toolbar .fc-center {
+  margin-top: 5px !important;
+}
+.fc-toolbar.fc-header-toolbar h2 {
+  font-size: 1.7em;
+}
+.fc-scroller.fc-time-grid-container {
+  min-height: 250px;
+}
+.fc-day.ui-widget-content.fc-tue.fc-today.ui-state-highlight {
+  /* background-color: #2b8bde; */
+}

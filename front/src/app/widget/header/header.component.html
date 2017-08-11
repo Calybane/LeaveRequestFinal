@@ -1,0 +1,39 @@
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+              data-target="#bs-example-navbar-collapse-1" aria-expanded="false" *ngIf="!isPageSignIn()">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand link text" routerLink="/">Pictet Technologies</a>
+      <!-- <a class="navbar-brand link" routerLink="/"><img class="img-responsive" src="assets/images/pictet.png" alt="Pictet Technologies" style="height:inherit"></a> -->
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav" *ngIf="!isPageSignIn()">
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+            Leave of absence <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="link" routerLink="/request">Leave Request Form</a></li>
+            <li><a class="link" routerLink="/list">List of my requests</a></li>
+            <li *ngIf="!isSimpleUser()"><a class="link" routerLink="/approval">Approval of requests</a></li>
+            <li *ngIf="!isSimpleUser()"><a class="link" routerLink="/dashboard">Dashboard</a></li>
+          </ul>
+        </li>
+        <li><a class="link" routerLink="/schedule"><span class="glyphicon glyphicon-calendar"></span> Calendar</a></li>
+        <li><a *ngIf="isHR()" class="link" routerLink="/setuptable"><span class="glyphicon glyphicon-cog"></span> Setup Table</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right" *ngIf="!isPageSignIn()">
+        <!--<li class="hidden-xs"><a routerLink="/"><span class="glyphicon glyphicon-user"></span> Hello {{person.firstname}} {{person.lastname}} !</a></li>-->
+        <li><a class="link" routerLink="" (click)="logout()"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>

@@ -1,0 +1,91 @@
+<div class="col-sm-offset-1 col-sm-10 col-md-offset-2 col-md-8 page-right nopadding div-request-form">
+  <div>
+    <h2>Leave of absence - Request form</h2>
+
+    <br>
+
+    <div *ngIf="getUserDaysLeft() < 1" class="alert alert-warning">
+      <strong>Attention! </strong> You have {{getUserDaysLeft()}} days left, you can not create a new leave request.
+    </div>
+
+    <form #f="ngForm" (ngSubmit)="onSubmit()" ngNativeValidate class="formRequest row" *ngIf="getUserDaysLeft() > 0">
+
+      <div class="form-group">
+        <label>Please choose type of absence :</label><br>
+        <p-selectButton [options]="types" name="types" [(ngModel)]="leaveRequest.typeAbsence" (onChange)="onChangeTypes()" required></p-selectButton>
+      </div>
+
+      <div class="well" *ngIf="showWellSpecial">
+        * Please ensure to include the relevant supporting documentation or follow-up after the event with HR.
+      </div>
+
+      <div class="form-group">
+        <label>Absence dates :</label>
+        <div class="row">
+          <div class="col-sm-6 nopadding">
+            <label>From :</label>
+            <br>
+            <p-calendar dateFormat="dd/mm/yy" name="startDate" [showIcon]="true" [disabledDates]="disabledDates" [disabledDays]="[0,6]" (onClose)="changeDaysTaken(); changeMaxDate();" [(ngModel)]="leaveRequest.leaveFrom" [minDate]="minDate" [monthNavigator]="true" [yearNavigator]="true" yearRange="2017:2030" required></p-calendar>
+          </div>
+
+          <div class="col-sm-6 nopadding">
+            <label>To (incl.) :</label>
+            <br>
+            <p-calendar dateFormat="dd/mm/yy" name="endDate" [showIcon]="true" [disabledDates]="disabledDates" [disabledDays]="[0,6]" (onClose)="changeDaysTaken();" [(ngModel)]="leaveRequest.leaveTo" [minDate]="leaveRequest.leaveFrom" [maxDate]="maxDate" [monthNavigator]="true" [yearNavigator]="true" yearRange="2017:2030" required></p-calendar>
+          </div>
+        </div>
+
+        <div *ngIf="leaveRequest.leaveTo < leaveRequest.leaveFrom">
+          <br>
+          <div class="alert alert-danger">
+            <strong>Attention!</strong> The start date can't be after the end date.
+          </div>
+        </div>
+
+        <div *ngIf="(getUserDaysLeft() - leaveRequest.daysTaken) < 0">
+          <br>
+          <div class="alert alert-danger">
+            <strong>Attention! </strong>The number of days left are incorrect.
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Number of days taken :</label> {{leaveRequest.daysTaken}} *
+      </div>
+
+      <div class="form-group">
+        <label>Number of annual leave days left :</label> {{getUserDaysLeft() - leaveRequest.daysTaken}}
+      </div>
+
+      <div class="form-group">
+        <label for="description">Description :</label>
+        <textarea class="form-control" rows="2" id="description" name="description" maxlength="255" [(ngModel)]="leaveRequest.description"></textarea>
+      </div>
+
+      <hr>
+
+      <div class="form-group">
+        <div class="row">
+          <div class="col-sm-6 nopadding">
+            <label>Request date :</label><br>
+            {{leaveRequest.requestDate | date : 'fullDate'}}
+          </div>
+
+          <div class="col-sm-6 nopadding">
+            <button type="submit" class="btn btn-default btn-lg pull-right" [disabled]="!validForm">Submit request</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-xs-12"><br></div>
+
+      <div [class]="requestSubmitted.style" *ngIf="requestSubmitted">
+        {{requestSubmitted.message}}
+      </div>
+
+      * If the chosen period includes public holidays, they will be deducted from the total.
+    </form>
+
+  </div>
+</div>

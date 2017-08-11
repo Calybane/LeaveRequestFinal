@@ -1,0 +1,60 @@
+<div class="col-lg-offset-1 col-lg-10 page-right nopadding lg">
+  <div>
+    <h2 class="title">List of users and their requests</h2>
+
+    <!-- PrimeNg list -->
+    <div class="override-primeng-datatable">
+      <p-dataTable [value]="list" [rows]="20" [paginator]="true" #dt>
+
+        <p-column field="login" header="Login" [filter]="true" filterPlaceholder="Search" filterMatchMode="contains">
+          <ng-template let-col let-row="rowData" let-ri="rowIndex" pTemplate="body">
+            <span>{{row.login}}</span>
+          </ng-template>
+        </p-column>
+
+        <p-column field="requestDate" header="Request date">
+          <ng-template let-col let-row="rowData" let-ri="rowIndex" pTemplate="body">
+            <span>{{row.requestDate | date : 'dd-MM-yyyy'}}</span>
+          </ng-template>
+        </p-column>
+
+        <p-column field="approvalDate" header="Approval date">
+          <ng-template let-col let-row="rowData" let-ri="rowIndex" pTemplate="body">
+            <span>{{row.approvalDate ? (row.approvalDate | date : 'dd-MM-yyyy') : 'NA'}}</span>
+          </ng-template>
+        </p-column>
+
+        <p-column field="leaveFrom" header="From">
+          <ng-template let-col let-row="rowData" let-ri="rowIndex" pTemplate="body">
+            <span>{{row.leaveFrom | date : 'dd-MM-yyyy'}}</span>
+          </ng-template>
+        </p-column>
+
+        <p-column field="leaveTo" header="To">
+          <ng-template let-col let-row="rowData" let-ri="rowIndex" pTemplate="body">
+            <span>{{row.leaveTo | date : 'dd-MM-yyyy'}}</span>
+          </ng-template>
+        </p-column>
+
+        <p-column field="daysTaken" header="Days taken">
+          <ng-template let-col let-row="rowData" let-ri="rowIndex" pTemplate="body">
+            <span>{{row.daysTaken}}</span>
+          </ng-template>
+        </p-column>
+
+        <p-column field="daysLeft" header="Days left">
+          <ng-template let-col let-row="rowData" let-ri="rowIndex" pTemplate="body">
+            <span>{{row.daysLeft}}</span>
+          </ng-template>
+        </p-column>
+
+        <p-column field="status" header="Status">
+          <ng-template let-col let-row="rowData" let-ri="rowIndex" pTemplate="body">
+            <div [class]="getStyleClass(row)">{{row.status}}</div>
+          </ng-template>
+        </p-column>
+
+      </p-dataTable>
+    </div>
+  </div>
+</div>

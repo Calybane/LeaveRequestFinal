@@ -1,0 +1,31 @@
+<div class="col-sm-offset-1 col-sm-10 col-md-offset-2 col-md-8 page-right nopadding">
+  <div>
+    <h2 class="title">Schedule</h2>
+
+    <br>
+
+    <p-schedule [events]="events" [header]="headerConfig" (onEventClick)="handleEventClick($event)"></p-schedule>
+
+    <p-dialog header="Leave request details" [(visible)]="dialogVisible" [responsive]="true" showEffect="fade" [modal]="false" [contentStyle]="{'overflow':'visible'}"
+              [style]="{'overflow':'visible'}" [resizable]="false">
+      <div class="ui-grid ui-grid-responsive ui-fluid dialog-div" *ngIf="event">
+        <div class="form-group" *ngIf="event.description">
+          <label for="title">Description :</label>
+          <span id="title"> {{event.description}}</span>
+        </div>
+        <div class="form-group">
+          <label for="start">From :</label>
+          <span id="start"> {{event.start | date : 'EEE dd-MM-yyyy'}}</span>
+        </div>
+        <div class="form-group" *ngIf="event.end">
+          <label for="end">To (incl.) :</label>
+          <span id="end"> {{event.end | date : 'EEE dd-MM-yyyy'}}</span>
+        </div>
+        <div class="form-group" *ngIf="event.status" style="margin-bottom: 0">
+          <label for="status">Status :</label>
+          <span id="status"> {{event.status}}</span>
+        </div>
+      </div>
+    </p-dialog>
+  </div>
+</div>

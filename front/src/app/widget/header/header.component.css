@@ -1,0 +1,27 @@
+div.header{
+  background-color: lightgray;
+  width: 100%;
+}
+ul.dropdown-menu > li > a{
+  font-size: 1.1em;
+}
+.navbar{
+  margin-bottom: 0;
+}
+.navbar-brand{
+  font-size: 1.3em;
+}
+.navbar-brand>img.img-responsive{
+  padding-top: 0px;
+  padding-bottom: 4px;
+  padding: 0 0 0 10px;
+}
+.navbar-inverse .navbar-brand, .navbar-inverse ul.nav.navbar-nav>li>a {
+  color: #f9f9f9 !important;
+  font-size: 1.1em;
+}
+@media (max-width: 767px) {
+  .navbar-inverse .navbar-nav .open .dropdown-menu > li > a {
+    color: #c3c2c2;
+  }
+}

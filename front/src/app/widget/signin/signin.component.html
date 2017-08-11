@@ -1,0 +1,21 @@
+<div class="col-sm-offset-3 col-sm-6 col-lg-offset-4 col-lg-4">
+  <div>
+    <form class="form-signin" (ngSubmit)="onSubmit()" ngNativeValidate>
+      <h2 class="form-signin-heading">Please sign in</h2>
+      <div class="form-group">
+        <label for="username" class="sr-only">Email address</label>
+        <input type="text" id="username" name="username" class="form-control" placeholder="Username" [(ngModel)]="username" required>
+      </div>
+      <div class="form-group">
+        <label for="password" class="sr-only">Password</label>
+        <input type="password" id="password" name="password" class="form-control" placeholder="Password" [(ngModel)]="password" required>
+      </div>
+
+      <div *ngIf="errorAuth" class="alert alert-danger">
+        <strong>Attention!</strong> Username and/or Password incorrect.
+      </div>
+
+      <button class="btn btn-lg btn-primary btn-block" type="submit" style="margin: 0;">Sign in</button>
+    </form>
+  </div>
+</div>

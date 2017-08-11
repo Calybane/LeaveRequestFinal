@@ -1,0 +1,13 @@
+.formRequest{
+  padding-bottom: 10px;
+}
+hr{
+  border-color: black;
+}
+@media (min-width: 2000px) {
+  .div-request-form{
+    width: 1400px;
+    float: none;
+    margin: 0 auto;
+  }
+}
